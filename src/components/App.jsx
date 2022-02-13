@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-  let increase = () => {
-    setCount(count + 1);
-  };
+  setInterval(getTime, 1000);
+  let now = new Date().toLocaleTimeString();
+  const [time, setTime] = useState(now);
 
-  let decrease = () => {
-    setCount(count - 1);
-  };
+  function getTime() {
+    const newTime = new Date().toLocaleTimeString();
+    setTime(newTime);
+  }
+
   return (
     <div className="container">
-      <h1>{count}</h1>
-      <button onClick={increase}>+</button>
-      <button onClick={decrease}>-</button>
+      <h1>{time}</h1>
+      <button onClick={getTime}>Get Time</button>
     </div>
   );
 }
